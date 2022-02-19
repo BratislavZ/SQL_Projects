@@ -164,7 +164,7 @@ continent nvarchar(255),
 location nvarchar(255),
 date datetime,
 population numeric,
-new_cases float,
+new_cases numeric,
 Rolling_Average_Infected float
 )
 INSERT INTO #Table_Average
