@@ -58,14 +58,14 @@ WHERE a.PropertyAddress IS NULL
 
 
 SELECT PropertyAddress, LEFT(PropertyAddress, CHARINDEX(',', PropertyAddress) - 1) AS adress,
-						RIGHT(PropertyAddress, LEN(PropertyAddress) - CHARINDEX(',', PropertyAddress)) AS city
+			RIGHT(PropertyAddress, LEN(PropertyAddress) - CHARINDEX(',', PropertyAddress)) AS city
 FROM PortfolioProject.dbo.NashvilleHousing
 
 
 --OR
 
 SELECT PropertyAddress, SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress) - 1) AS adress,
-						SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) + 1, LEN(PropertyAddress)) AS city
+			SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) + 1, LEN(PropertyAddress)) AS city
 FROM PortfolioProject.dbo.NashvilleHousing
 
 ALTER TABLE NashvilleHousing
@@ -84,8 +84,8 @@ SET city = SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) + 1, LEN(P
 
 
 SELECT PARSENAME(REPLACE(OwnerAddress, ',', '.'),3) AS O_adress,
-	   PARSENAME(REPLACE(OwnerAddress, ',', '.'),2) AS O_city,
-	   PARSENAME(REPLACE(OwnerAddress, ',', '.'),1) AS O_state
+       PARSENAME(REPLACE(OwnerAddress, ',', '.'),2) AS O_city,
+       PARSENAME(REPLACE(OwnerAddress, ',', '.'),1) AS O_state
 FROM PortfolioProject.dbo.NashvilleHousing
 
 
@@ -122,18 +122,18 @@ ORDER BY 2
 
 SELECT SoldAsVacant,
 CASE
-	WHEN SoldAsVacant = 'Y' THEN 'Yes'
-	WHEN SoldAsVacant = 'N' THEN 'No'
-	ELSE SoldAsVacant
+     WHEN SoldAsVacant = 'Y' THEN 'Yes'
+     WHEN SoldAsVacant = 'N' THEN 'No'
+     ELSE SoldAsVacant
 END
 FROM PortfolioProject.dbo.NashvilleHousing
 
 UPDATE PortfolioProject.dbo.NashvilleHousing
 SET SoldAsVacant = CASE
-						WHEN SoldAsVacant = 'Y' THEN 'Yes'
-						WHEN SoldAsVacant = 'N' THEN 'No'
-						ELSE SoldAsVacant
-					END
+			WHEN SoldAsVacant = 'Y' THEN 'Yes'
+			WHEN SoldAsVacant = 'N' THEN 'No'
+			ELSE SoldAsVacant
+		   END
 
 
 
